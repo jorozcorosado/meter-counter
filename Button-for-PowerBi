@@ -1,0 +1,23 @@
+<html>
+  <head>
+	 <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.17.0.js"></script>
+  </head>
+  <body>
+    <input type = "button" value = "GPIO 11 - OFF" style="height: 100px; width: 100px; left: 250; top: 250;"onclick = "publish()"/>    
+    <script charset="utf-8">
+      
+function publish() {
+    pubnub = new PubNub({
+        publishKey : 'Your-PublishKey-Here',
+        subscribeKey : 'Your-SubscribeKey-Here'
+    })
+        pubnub.publish({
+            channel : "Your-Channel-Here",
+            message : {action:"off", gpio:"11"}
+        }, function(status, response) {
+            console.log(status, response);
+        })
+};
+    </script>
+  </body>
+</html>
